@@ -31,6 +31,7 @@ public class LightDetectionController : MonoBehaviour
         RenderTexture.ReleaseTemporary(tmp);
 
         Color32[] colors = myTexture2D.GetPixels32();
+        Destroy(myTexture2D);
         LightLevel = 0;
         for(int i = 0; i < colors.Length; i++)
         {
