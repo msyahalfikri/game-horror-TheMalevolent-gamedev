@@ -27,7 +27,8 @@ public class SanityManager : MonoBehaviour
     {
         currentSanity = maxSanity;
         sanityBarContainer.SetActive(sanityBarActive);
-        if (sanityBarActive) {
+        if (sanityBarActive)
+        {
             sanityBar.maxValue = maxSanity;
         }
 
@@ -39,33 +40,42 @@ public class SanityManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        if (LightDetectionController.Light > 11) {
+    {
+        if (LightDetectionController.Light > lightHealSanity)
+        {
             increaseSanity();
-        } else
+        }
+        else
         {
             decreaseSanity();
         }
-        if (sanityBarActive) {
+        if (sanityBarActive)
+        {
             sanityBar.value = currentSanity;
         }
 
         // Heartbeat Audio Control
-        if (currentSanity <= insanityThreshold) {
-            if (!heartbeatAudioSource.isPlaying) {
+        if (currentSanity <= insanityThreshold)
+        {
+            if (!heartbeatAudioSource.isPlaying)
+            {
                 heartbeatAudioSource.Play();
             }
             heartbeatAudioSource.volume = 0.1f + ((1 - (currentSanity / insanityThreshold)) * 0.9f);
             InvokeRepeating("shakeCamera", 0f, 1.8f);
             setPostProcessBySanity();
-        } else if (heartbeatAudioSource.isPlaying) {
+        }
+        else if (heartbeatAudioSource.isPlaying)
+        {
             CancelInvoke("shakeCamera");
             heartbeatAudioSource.Stop();
             defaultPostProcess();
         }
+        Debug.Log(LightDetectionController.Light);
     }
 
-    private void setPostProcessBySanity() {
+    private void setPostProcessBySanity()
+    {
         _colorGrading.saturation.value = (1 - (currentSanity / insanityThreshold)) * -100f;
         _autoExposure.keyValue.value = .3f + ((currentSanity / insanityThreshold) * .7f);
         _vignette.active = true;
@@ -74,7 +84,8 @@ public class SanityManager : MonoBehaviour
         _vignette.roundness.value = .1f + (1 - (currentSanity / insanityThreshold)) * .8f;
     }
 
-    private void defaultPostProcess() {
+    private void defaultPostProcess()
+    {
         _colorGrading.saturation.value = 0;
         _autoExposure.keyValue.value = 1;
         _vignette.intensity.value = 0;
@@ -110,7 +121,8 @@ public class SanityManager : MonoBehaviour
         }
     }
 
-    private void shakeCamera() {
+    private void shakeCamera()
+    {
         // Add camera shake function here
-    } 
+    }
 }
