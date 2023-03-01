@@ -6,7 +6,7 @@ public class PlayerCam : MonoBehaviour
 {
     [SerializeField] float sensX = 8f;
     [SerializeField] float sensY = 0.5f;
-    float xMouse, yMouse;
+    [SerializeField] public float xMouse, yMouse;
     [SerializeField] Transform playerCamera;
     [SerializeField] float xClamp = 85f;
     float xRotation = 0;

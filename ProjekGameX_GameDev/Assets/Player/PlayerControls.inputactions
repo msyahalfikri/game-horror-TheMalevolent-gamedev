@@ -172,6 +172,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Interaction",
+            "id": "5c9fa0ec-7152-4f4c-a05a-4384f7f1978d",
+            "actions": [
+                {
+                    "name": "ControlFlashlight",
+                    "type": "Button",
+                    "id": "1cc681b6-ad03-4cc5-9733-3ad98b5637f3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "94e87df4-3ba7-4122-8526-b91b62dff315",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControlFlashlight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

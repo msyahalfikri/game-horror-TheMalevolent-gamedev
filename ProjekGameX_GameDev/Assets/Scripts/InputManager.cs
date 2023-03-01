@@ -5,9 +5,11 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [SerializeField] PlayerMovement movement;
+    [SerializeField] Flashlight flashlighController;
     [SerializeField] PlayerCam mouseLook;
     PlayerControls controls;
     PlayerControls.GroundMovementActions groundMovement;
+    PlayerControls.InteractionActions interactions;
     Vector2 horizontalInput;
     Vector2 mouseInput;
 
@@ -15,8 +17,11 @@ public class InputManager : MonoBehaviour
     {
         controls = new PlayerControls();
         groundMovement = controls.GroundMovement;
+        interactions = controls.Interaction;
 
         groundMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
+
+
         groundMovement.Jump.performed += _ => movement.OnJumpPressed();
 
         groundMovement.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
@@ -25,7 +30,7 @@ public class InputManager : MonoBehaviour
         groundMovement.Run.canceled += _ => movement.OnRunPressed(false);
         groundMovement.Crouch.performed += _ => movement.OnCrouchPressed();
 
-
+        interactions.ControlFlashlight.performed += _ => flashlighController.SetFlashlightState();
     }
     private void Update()
     {

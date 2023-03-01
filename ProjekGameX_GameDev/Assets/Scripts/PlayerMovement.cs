@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float crouchSpeed;
     public float crouchYScale;
-    public float startYScale;
+    [HideInInspector] public float startYScale;
 
     [SerializeField] float jumpHeight = 3.5f;
     bool jump;
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     public void StateHandler()
     {
 
-        if (isGrounded && isRunning && _staminaController.hasRegenerated && isCrouched == false)
+        if (isRunning && _staminaController.hasRegenerated && isCrouched == false && horizontalVelocity.magnitude >= walkSpeed)
         {
             state = movementState.sprinting;
             speed = runSpeed;

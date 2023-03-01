@@ -53,6 +53,7 @@ public class SanityManager : MonoBehaviour
         {
             sanityBar.value = currentSanity;
         }
+        Debug.Log("light intensity: " + LightDetectionController.Light);
 
         // Heartbeat Audio Control
         if (currentSanity <= insanityThreshold)
@@ -62,16 +63,15 @@ public class SanityManager : MonoBehaviour
                 heartbeatAudioSource.Play();
             }
             heartbeatAudioSource.volume = 0.1f + ((1 - (currentSanity / insanityThreshold)) * 0.9f);
-            InvokeRepeating("shakeCamera", 0f, 1.8f);
+            StartCoroutine(shakeCamera());
             setPostProcessBySanity();
         }
         else if (heartbeatAudioSource.isPlaying)
         {
-            CancelInvoke("shakeCamera");
+            StopCoroutine(shakeCamera());
             heartbeatAudioSource.Stop();
             defaultPostProcess();
         }
-        Debug.Log(LightDetectionController.Light);
     }
 
     private void setPostProcessBySanity()
@@ -121,8 +121,9 @@ public class SanityManager : MonoBehaviour
         }
     }
 
-    private void shakeCamera()
+    IEnumerator shakeCamera()
     {
-        // Add camera shake function here
+        CameraShaker.Invoke();
+        yield return new WaitForSeconds(0.4f);
     }
 }

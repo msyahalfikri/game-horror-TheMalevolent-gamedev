@@ -194,6 +194,34 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Interaction"",
+            ""id"": ""5c9fa0ec-7152-4f4c-a05a-4384f7f1978d"",
+            ""actions"": [
+                {
+                    ""name"": ""ControlFlashlight"",
+                    ""type"": ""Button"",
+                    ""id"": ""1cc681b6-ad03-4cc5-9733-3ad98b5637f3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""94e87df4-3ba7-4122-8526-b91b62dff315"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControlFlashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -206,6 +234,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_GroundMovement_MouseY = m_GroundMovement.FindAction("MouseY", throwIfNotFound: true);
         m_GroundMovement_Run = m_GroundMovement.FindAction("Run", throwIfNotFound: true);
         m_GroundMovement_Crouch = m_GroundMovement.FindAction("Crouch", throwIfNotFound: true);
+        // Interaction
+        m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
+        m_Interaction_ControlFlashlight = m_Interaction.FindAction("ControlFlashlight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -334,6 +365,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public GroundMovementActions @GroundMovement => new GroundMovementActions(this);
+
+    // Interaction
+    private readonly InputActionMap m_Interaction;
+    private IInteractionActions m_InteractionActionsCallbackInterface;
+    private readonly InputAction m_Interaction_ControlFlashlight;
+    public struct InteractionActions
+    {
+        private @PlayerControls m_Wrapper;
+        public InteractionActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ControlFlashlight => m_Wrapper.m_Interaction_ControlFlashlight;
+        public InputActionMap Get() { return m_Wrapper.m_Interaction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InteractionActions set) { return set.Get(); }
+        public void SetCallbacks(IInteractionActions instance)
+        {
+            if (m_Wrapper.m_InteractionActionsCallbackInterface != null)
+            {
+                @ControlFlashlight.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnControlFlashlight;
+                @ControlFlashlight.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnControlFlashlight;
+                @ControlFlashlight.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnControlFlashlight;
+            }
+            m_Wrapper.m_InteractionActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ControlFlashlight.started += instance.OnControlFlashlight;
+                @ControlFlashlight.performed += instance.OnControlFlashlight;
+                @ControlFlashlight.canceled += instance.OnControlFlashlight;
+            }
+        }
+    }
+    public InteractionActions @Interaction => new InteractionActions(this);
     public interface IGroundMovementActions
     {
         void OnHorizontalMovement(InputAction.CallbackContext context);
@@ -342,5 +406,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMouseY(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+    }
+    public interface IInteractionActions
+    {
+        void OnControlFlashlight(InputAction.CallbackContext context);
     }
 }

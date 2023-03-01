@@ -9,12 +9,11 @@ public class HeadBobController : MonoBehaviour
     [SerializeField, Range(0, 30)] private float frequency = 10.0f;
 
     [SerializeField] private Transform _camera = null;
-    [SerializeField] private Transform cameraHolder = null;
 
     private float toggleSpeed = 3.0f;
     private Vector3 startPos;
     private CharacterController _controller;
-    public PlayerMovement _playerMovement;
+    [HideInInspector] public PlayerMovement _playerMovement;
 
 
     private void Awake()
@@ -34,7 +33,6 @@ public class HeadBobController : MonoBehaviour
 
     private void CheckMotion()
     {
-        // float speed = new Vector3(_controller.velocity.x, 0, _controller.velocity.z).magnitude;  //velocity x dan z tidak terbaca
         float speed = _playerMovement.horizontalVelocity.magnitude;
 
         ResetPosition();
@@ -58,15 +56,7 @@ public class HeadBobController : MonoBehaviour
     {
         if (!_enable) return;
         CheckMotion();
-        _camera.LookAt(FocusTarget());
 
-    }
-
-    private Vector3 FocusTarget()
-    {
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + cameraHolder.localPosition.y, transform.position.z);
-        pos += cameraHolder.forward * 20.0f;
-        return pos;
     }
 
 }

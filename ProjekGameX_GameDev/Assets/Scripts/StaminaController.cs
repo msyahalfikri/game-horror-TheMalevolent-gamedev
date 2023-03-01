@@ -13,6 +13,7 @@ public class StaminaController : MonoBehaviour
     [Range(0, 50)] [SerializeField] private float staminaDrain = 0.5f;
     [Range(0, 50)] [SerializeField] private float staminaRegen = 0.5f;
 
+
     // [SerializeField] private int slowedRunSpeed = 4;
     // [SerializeField] private int normalRunSpeed = 8;
 
@@ -21,9 +22,11 @@ public class StaminaController : MonoBehaviour
 
     [HideInInspector] public PlayerMovement _playerMovement;
 
+
     private void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
+
     }
     public void Sprinting()
     {
