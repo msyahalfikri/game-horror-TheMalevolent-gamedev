@@ -21,6 +21,10 @@ public class InputManager : MonoBehaviour
 
         groundMovement.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
         groundMovement.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
+        groundMovement.Run.performed += _ => movement.OnRunPressed(true);
+        groundMovement.Run.canceled += _ => movement.OnRunPressed(false);
+        groundMovement.Crouch.performed += _ => movement.OnCrouchPressed();
+
 
     }
     private void Update()
