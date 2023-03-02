@@ -53,7 +53,7 @@ public class SanityManager : MonoBehaviour
         {
             sanityBar.value = currentSanity;
         }
-        Debug.Log("light intensity: " + LightDetectionController.Light);
+        // Debug.Log("light intensity: " + LightDetectionController.Light);
 
         // Heartbeat Audio Control
         if (currentSanity <= insanityThreshold)

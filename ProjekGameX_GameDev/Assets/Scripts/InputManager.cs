@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] PlayerMovement movement;
     [SerializeField] Flashlight flashlighController;
+    [SerializeField] PickupCollectibleController pickupController;
     [SerializeField] PlayerCam mouseLook;
     PlayerControls controls;
     PlayerControls.GroundMovementActions groundMovement;
@@ -31,6 +32,7 @@ public class InputManager : MonoBehaviour
         groundMovement.Crouch.performed += _ => movement.OnCrouchPressed();
 
         interactions.ControlFlashlight.performed += _ => flashlighController.SetFlashlightState();
+        interactions.PickupCollectibles.performed += _ => pickupController.pickupCollectible();
     }
     private void Update()
     {
