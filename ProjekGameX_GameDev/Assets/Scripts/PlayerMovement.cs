@@ -4,38 +4,56 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] CharacterController controller;
     [HideInInspector] public StaminaController _staminaController;
+    public Transform cameraHolder;
+    public movementState state;
+
+    [Header("Player Movement")]
     float speed = 11f;
     [SerializeField] float gravity = -30f;
     public float walkSpeed;
     public float runSpeed;
-
-    public float crouchSpeed;
-    public float crouchYScale;
-    [HideInInspector] public float startYScale;
-
+    public float crouchWalkSpeed;
     [SerializeField] float jumpHeight = 3.5f;
     bool jump;
-    bool isRunning;
-    [SerializeField] bool isCrouched = false;
+    public bool runButtonPressed;
     Vector3 verticalVelocity = Vector3.zero;
-    public bool isGrounded;
+    [HideInInspector] public bool isGrounded;
     Vector2 horizontalInput;
     [HideInInspector] public Vector3 horizontalVelocity;
 
-    public movementState state;
+    [Header("Crouch")]
+    // public float crouchYScale;
+    // [HideInInspector] public float startYScale;
+    [SerializeField] bool isCrouched = false;
+    public float cameraStandHeight;
+    public float crouchCameraHeight;
+    public float crouchColliderHeight;
+    private float standColliderHeight;
+    private float cameraHeight;
+    private float cameraHeightVelocity;
+    public float playerCrouchSmoothing;
+
+    [Header("Animation")]
+    public float flashlightAnimationSpeed;
+
+
     public enum movementState
     {
         walking,
         sprinting,
-        crouching,
+        crouchingIdle,
+        crouchingWalking,
+        StandingIdle,
         air
     }
     private void Start()
     {
         _staminaController = GetComponent<StaminaController>();
-        startYScale = transform.localScale.y;
+        cameraHeight = cameraHolder.localPosition.y;
+        standColliderHeight = controller.height;
     }
 
     private void Update()
@@ -57,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
         StateHandler();
+        CalculateCameraHeight();
+
     }
     public void ReceiveInput(Vector2 _horizontalInput)
     {
@@ -69,51 +89,93 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnRunPressed(bool state)
     {
-        isRunning = state;
+        if (!isCrouched)
+        {
+            runButtonPressed = state;
+        }
     }
 
     public void StateHandler()
     {
-
-        if (isRunning && _staminaController.hasRegenerated && isCrouched == false && horizontalVelocity.magnitude >= walkSpeed)
+        bool isMoving;
+        if (horizontalInput.Equals(Vector3.zero))
         {
-            state = movementState.sprinting;
-            speed = runSpeed;
+            isMoving = false;
+        }
+        else
+        {
+            isMoving = true;
+        }
+
+        if (runButtonPressed && _staminaController.hasRegenerated && isCrouched == false && horizontalVelocity.magnitude >= walkSpeed && isMoving)
+        {
             if (_staminaController.playerStamina > 0)
             {
-                _staminaController.isSprinting = true;
+                state = movementState.sprinting;
+                speed = runSpeed;
                 _staminaController.Sprinting();
             }
-
         }
-        else if (isGrounded && isCrouched == false)
+        else if (isGrounded && isCrouched == false && isMoving)
         {
             state = movementState.walking;
-            speed = walkSpeed;
             _staminaController.isSprinting = false;
+            speed = walkSpeed;
+            flashlightAnimationSpeed = CalculateAnimationSpeed(1f);
         }
-        else if (isGrounded && isCrouched == true)
+        else if (isGrounded && isCrouched == true && isMoving)
         {
-            state = movementState.crouching;
-            speed = crouchSpeed;
+            state = movementState.crouchingWalking;
+            _staminaController.isSprinting = false;
+            speed = crouchWalkSpeed;
+            flashlightAnimationSpeed = CalculateAnimationSpeed(0.5f);
+        }
+        else if (isGrounded && isCrouched == true && !isMoving)
+        {
+            state = movementState.crouchingIdle;
+            _staminaController.isSprinting = false;
+            flashlightAnimationSpeed = CalculateAnimationSpeed(1f);
+        }
+        else if (isGrounded && isCrouched == false && !isMoving)
+        {
+            state = movementState.StandingIdle;
+            _staminaController.isSprinting = false;
+            flashlightAnimationSpeed = CalculateAnimationSpeed(1f);
         }
         else
         {
             state = movementState.air;
+            flashlightAnimationSpeed = CalculateAnimationSpeed(1f);
         }
+        Debug.Log(_staminaController.isSprinting);
+    }
+
+    public float CalculateAnimationSpeed(float speed)
+    {
+        float animationSpeed;
+        animationSpeed = speed;
+        return animationSpeed;
     }
 
     public void OnCrouchPressed()
     {
         isCrouched = !isCrouched;
+    }
+    private void CalculateCameraHeight()
+    {
+        var stanceCameraHeight = cameraStandHeight;
+        var stanceColliderHeight = standColliderHeight;
+
         if (isCrouched)
         {
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+            stanceCameraHeight = crouchCameraHeight;
+            stanceColliderHeight = crouchColliderHeight;
         }
-        else
-        {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-        }
+
+        cameraHeight = Mathf.SmoothDamp(cameraHolder.localPosition.y, stanceCameraHeight, ref cameraHeightVelocity, playerCrouchSmoothing);
+        cameraHolder.localPosition = new Vector3(cameraHolder.localPosition.x, cameraHeight, cameraHolder.localPosition.z);
+
+        controller.height = Mathf.SmoothDamp(controller.height, stanceColliderHeight, ref cameraHeightVelocity, playerCrouchSmoothing);
 
     }
 
