@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickupCollectibleController : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class PickupCollectibleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            pickUpUI.SetActive(false);
+            pickUpUI.GetComponent<Image>().enabled = false;
     }
 
     // Update is called once per frame
@@ -32,16 +33,23 @@ public class PickupCollectibleController : MonoBehaviour
         // Activate UI when Ray hit
         if (hit.collider != null)
         {
-            pickUpUI.SetActive(false);
+            hit.collider.GetComponent<Highlight>()?.ToggleHighlight(false);
+            pickUpUI.GetComponent<Image>().enabled = false;
+            pickUpUI.GetComponent<UIFollowWorld>().setLookAt(null);
         }
-        if (Physics.Raycast(
-            playerCamTransform.position, 
-            playerCamTransform.forward, 
-            out hit, 
-            hitRange, 
-            collectibleLayerMask))
+        if (Physics.BoxCast(
+            playerCamTransform.position,
+            playerCamTransform.localScale,
+            playerCamTransform.forward,
+            out hit,
+            playerCamTransform.rotation,
+            hitRange,
+            collectibleLayerMask
+            ))
         {
-            pickUpUI.SetActive(true);
+            hit.collider.GetComponent<Highlight>()?.ToggleHighlight(true);
+            pickUpUI.GetComponent<UIFollowWorld>().setLookAt(hit.transform);
+            pickUpUI.GetComponent<Image>().enabled = true;
         }
 
         // Pickup function
