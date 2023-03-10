@@ -21,7 +21,7 @@ public class CollectibleSpawnController : MonoBehaviour
             
             foreach (var spot in randomizedSpawnSpots)
             {   
-                Instantiate(collectibleObject, spot.position, spot.rotation);
+                GameObject collectible = Instantiate(collectibleObject, spot.position, spot.rotation);
             }
         }
     }
