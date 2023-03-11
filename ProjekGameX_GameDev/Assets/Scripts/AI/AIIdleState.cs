@@ -4,33 +4,44 @@ using UnityEngine;
 
 public class AIIdleState : AIState
 {
+    float waitTime;
+    GameObject playerGameobject;
     public AiStateID GetID()
     {
         return AiStateID.Idle;
     }
     public void Enter(AIAgent agent)
     {
-
+        waitTime = agent.config.maxWaitTime;
+        playerGameobject = null;
     }
     public void Update(AIAgent agent)
     {
-        Vector3 playerDirection = agent.playerTransform.position - agent.transform.position;
-        if (playerDirection.magnitude > agent.config.maxSightDistance)
+        waitTime -= Time.deltaTime;
+        if (waitTime <= 0)
         {
-            return;
+            agent.stateMachine.ChangeState(AiStateID.Patrol);
         }
-        Vector3 agentDirection = agent.transform.forward;
-
-        playerDirection.Normalize();
-        float dotProduct = Vector3.Dot(playerDirection, agentDirection);
-        if (dotProduct > 0.0f)
+        else if (!playerGameobject)
         {
-            agent.stateMachine.ChangeState(AiStateID.ChasePlayer);
+            FindPlayer(agent);
         }
-
+        Debug.Log(waitTime);
     }
     public void Exit(AIAgent agent)
     {
 
+    }
+    GameObject FindPlayer(AIAgent agent)
+    {
+        if (agent.sensor.objects.Count > 0)
+        {
+            if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
+            {
+                agent.stateMachine.ChangeState(AiStateID.ChasePlayer);
+
+            }
+        }
+        return null;
     }
 }

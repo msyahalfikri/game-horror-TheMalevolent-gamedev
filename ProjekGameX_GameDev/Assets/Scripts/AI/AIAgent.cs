@@ -8,18 +8,25 @@ public class AIAgent : MonoBehaviour
     public AIStateMachine stateMachine;
     public AiStateID initialState;
     public NavMeshAgent navMeshAgent;
-    public AIAgentConfig config;
+    [HideInInspector] public AIAgentConfig config;
     public Transform playerTransform;
-    public InverseKinematic AiIK;
+    [HideInInspector] public InverseKinematic AiIK;
+    public RandomSpawn randomSpawn;
+    public AISensor sensor;
+
+    public AudioSource sfxSound;
     // Start is called before the first frame update
     void Start()
     {
         AiIK = GetComponent<InverseKinematic>();
+        randomSpawn = GetComponent<RandomSpawn>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        sensor = GetComponent<AISensor>();
         playerTransform = GameObject.FindGameObjectWithTag("PlayerHead").transform;
         stateMachine = new AIStateMachine(this);
         stateMachine.RegisterState(new AIChasePlayerState());
         stateMachine.RegisterState(new AIIdleState());
+        stateMachine.RegisterState(new AIPatrolState());
         stateMachine.ChangeState(initialState);
     }
 

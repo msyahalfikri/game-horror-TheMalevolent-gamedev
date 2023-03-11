@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 0.5
   maxDistance: 2
-  maxSightDistance: 15
+  maxSightDistance: 20
   maxChaseTime: 10
+  range: 50
+  walkSpeed: 4
+  runSpeed: 8
+  maxWaitTime: 5

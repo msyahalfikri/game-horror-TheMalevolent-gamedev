@@ -5,7 +5,8 @@ using UnityEngine;
 public enum AiStateID
 {
     Idle,
-    ChasePlayer
+    ChasePlayer,
+    Patrol
 }
 
 public interface AIState

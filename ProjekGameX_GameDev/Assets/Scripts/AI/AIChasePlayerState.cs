@@ -12,16 +12,20 @@ public class AIChasePlayerState : AIState
     }
     public void Enter(AIAgent agent)
     {
+        agent.sfxSound.Play();
         agent.AiIK.SetTargetTransform(agent.playerTransform);
         chaseTimer = agent.config.maxChaseTime;
+        agent.navMeshAgent.speed = agent.config.runSpeed;
     }
     public void Update(AIAgent agent)
     {
+
         Vector3 playerDirection = agent.playerTransform.position - agent.transform.position;
         chaseTimer -= Time.deltaTime;
         if (chaseTimer <= 0 && (playerDirection.magnitude > agent.config.maxSightDistance))
         {
-            agent.stateMachine.ChangeState(AiStateID.Idle);
+            agent.randomSpawn.RandomSpawnNearPlayer(40, 70);
+            agent.stateMachine.ChangeState(AiStateID.Patrol);
         }
         else if (chaseTimer <= 0 && (playerDirection.magnitude < agent.config.maxSightDistance))
         {
@@ -38,8 +42,6 @@ public class AIChasePlayerState : AIState
             }
             timer = agent.config.maxTime;
         }
-
-        Debug.Log("player Magnitude: " + playerDirection.magnitude);
         Debug.Log("chase time: " + chaseTimer);
     }
     public void Exit(AIAgent agent)
