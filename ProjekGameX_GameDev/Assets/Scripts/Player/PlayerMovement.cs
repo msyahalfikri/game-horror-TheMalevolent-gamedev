@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool isGrounded;
     Vector2 horizontalInput;
     [HideInInspector] public Vector3 horizontalVelocity;
+    [HideInInspector] public bool isMoving;
 
     [Header("Crouch")]
     // public float crouchYScale;
@@ -97,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void StateHandler()
     {
-        bool isMoving;
         if (horizontalInput.Equals(Vector3.zero))
         {
             isMoving = false;
@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             isMoving = true;
         }
 
-        if (runButtonPressed && _staminaController.hasRegenerated && isCrouched == false && horizontalVelocity.magnitude >= walkSpeed && isMoving)
+        if (isGrounded && runButtonPressed && _staminaController.hasRegenerated && isCrouched == false && horizontalVelocity.magnitude >= walkSpeed && isMoving)
         {
             if (_staminaController.playerStamina > 0)
             {

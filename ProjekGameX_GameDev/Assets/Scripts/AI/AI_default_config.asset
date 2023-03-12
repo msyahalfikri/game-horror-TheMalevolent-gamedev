@@ -15,8 +15,9 @@ MonoBehaviour:
   maxTime: 0.5
   maxDistance: 2
   maxSightDistance: 20
-  maxChaseTime: 10
+  ChaseTime: 10
+  MaxChaseTime: 20
   range: 50
-  walkSpeed: 4
-  runSpeed: 8
-  maxWaitTime: 5
+  walkSpeed: 5
+  runSpeed: 9
+  maxWaitTime: 15

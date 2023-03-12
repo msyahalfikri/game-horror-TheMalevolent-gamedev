@@ -13,6 +13,7 @@ public class AIAgent : MonoBehaviour
     [HideInInspector] public InverseKinematic AiIK;
     public RandomSpawn randomSpawn;
     public AISensor sensor;
+    public AudioClip horrorStinger;
 
     public AudioSource sfxSound;
     // Start is called before the first frame update

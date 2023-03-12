@@ -20,6 +20,7 @@ public class AIIdleState : AIState
         waitTime -= Time.deltaTime;
         if (waitTime <= 0)
         {
+            agent.navMeshAgent.isStopped = false;
             agent.stateMachine.ChangeState(AiStateID.Patrol);
         }
         else if (!playerGameobject)
@@ -38,8 +39,8 @@ public class AIIdleState : AIState
         {
             if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
             {
+                agent.navMeshAgent.isStopped = false;
                 agent.stateMachine.ChangeState(AiStateID.ChasePlayer);
-
             }
         }
         return null;
