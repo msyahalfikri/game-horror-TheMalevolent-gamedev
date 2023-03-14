@@ -39,7 +39,6 @@ public class AIChasePlayerState : AIState
             }
             timer = agent.config.maxTime;
         }
-        Debug.Log("chase time: " + chaseTimer);
     }
     public void Exit(AIAgent agent)
     {
