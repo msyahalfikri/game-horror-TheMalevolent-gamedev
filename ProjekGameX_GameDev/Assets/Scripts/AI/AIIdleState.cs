@@ -27,7 +27,6 @@ public class AIIdleState : AIState
         {
             FindPlayer(agent);
         }
-        Debug.Log(waitTime);
     }
     public void Exit(AIAgent agent)
     {
