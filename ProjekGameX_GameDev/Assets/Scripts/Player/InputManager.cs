@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    [Header("General")]
     [SerializeField] PlayerMovement movement;
     [SerializeField] Flashlight flashlighController;
     [SerializeField] PickupCollectibleController pickupController;
@@ -13,6 +14,9 @@ public class InputManager : MonoBehaviour
     PlayerControls.InteractionActions interactions;
     Vector2 horizontalInput;
     Vector2 mouseInput;
+
+    [Header("Events")]
+    public GameEvent onTryPickupCollectible;
 
     private void Awake()
     {
@@ -32,7 +36,7 @@ public class InputManager : MonoBehaviour
         groundMovement.Crouch.performed += _ => movement.OnCrouchPressed();
 
         interactions.ControlFlashlight.performed += _ => flashlighController.SetFlashlightState();
-        interactions.PickupCollectibles.performed += _ => pickupController.pickupCollectible();
+        interactions.PickupCollectibles.performed += _ => onTryPickupCollectible.Raise();
     }
     private void Update()
     {
