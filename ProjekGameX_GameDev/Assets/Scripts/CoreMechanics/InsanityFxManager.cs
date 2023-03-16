@@ -22,8 +22,8 @@ public class InsanityFxManager : MonoBehaviour
     }
 
     public void onInsanityUpdated(Component sender, object data)
-    {   
-        float insanityPercent = (float) data;
+    {
+        float insanityPercent = (float)data;
         if (insanityPercent < insanityPercentTrigger)
         {
             defaultPostProcess();

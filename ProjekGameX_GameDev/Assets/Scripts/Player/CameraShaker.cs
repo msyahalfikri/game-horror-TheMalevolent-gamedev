@@ -25,7 +25,5 @@ public class CameraShaker : MonoBehaviour
         _camera.DOComplete();
         _camera.DOShakePosition(0.3f, _positionStrength);
         _camera.DOShakeRotation(0.3f, _rotationStrength);
-
-
     }
 }
