@@ -23,8 +23,8 @@ public class InsanityFxManager : MonoBehaviour
 
     public void onInsanityUpdated(Component sender, object data)
     {
-        float insanityPercent = (float)data;
-        if (insanityPercent < insanityPercentTrigger)
+        float insanityPercent = (float) data;
+        if (insanityPercent < insanityPercentTrigger || insanityPercent > 0.98f)
         {
             defaultPostProcess();
             if (heartbeatAudioSource.isPlaying) heartbeatAudioSource.Stop();
