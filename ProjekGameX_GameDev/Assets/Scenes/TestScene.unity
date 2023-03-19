@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.116085656, g: 0.0987392, b: 0.081453286, a: 1}
+  m_IndirectSpecularColor: {r: 0.11608558, g: 0.09873914, b: 0.081453316, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1681,7 +1681,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupSpeed: 20
   camHeightOffset: -1
-  pickupActive: 0
   onPickupDone: {fileID: 0}
 --- !u!82 &699403241
 AudioSource:
@@ -2964,7 +2963,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupSpeed: 20
   camHeightOffset: -1
-  pickupActive: 0
   onPickupDone: {fileID: 11400000, guid: b2b318d146b23f4489066e41032df5bb, type: 2}
 --- !u!114 &1235707754
 MonoBehaviour:
