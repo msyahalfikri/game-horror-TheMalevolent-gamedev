@@ -8,7 +8,7 @@ public class InsanityFxManager : MonoBehaviour
     public AudioSource heartbeatAudioSource;
     public PostProcessVolume postProcessVolume;
 
-    public float insanityPercentTrigger = 0.01f;
+    public float insanityPercentTrigger = 0.000001f;
     private ColorGrading _colorGrading;
     private Vignette _vignette;
     private AutoExposure _autoExposure;
