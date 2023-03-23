@@ -11,6 +11,7 @@ public class CollectibleStats : MonoBehaviour
 
     [Header("Events")]
     public GameEvent onCollectibleBatchExhausted;
+    public GameEvent onCollectibleStatsUpdated;
 
     public void OnCollectibleSpawn(Component sender, object data)
     {
@@ -28,6 +29,7 @@ public class CollectibleStats : MonoBehaviour
         GameObject collectible = (GameObject) data;
         collectibleExist.Remove(collectible);
         collectedCollectible++;
+        onCollectibleStatsUpdated.Raise(collectedCollectible);
         if (collectibleExist.Count == 0)
         {
             if (isEndlessMode)
