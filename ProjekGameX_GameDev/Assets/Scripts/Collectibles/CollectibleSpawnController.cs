@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class CollectibleSpawnController : MonoBehaviour
 {
+    [Header("General")]
     public GameObject collectibleObject;
     public int spawnAmount;
     public Transform[] spawnSpots;
 
+    [Header("Events")]
+    public GameEvent onCollectibleSpawn;
+
     // Start is called before the first frame update
-    void Start()
+    public void SpawnCollectibles(Component sender, object data)
     {
         if (spawnAmount > spawnSpots.Length) 
         {
@@ -22,6 +26,7 @@ public class CollectibleSpawnController : MonoBehaviour
             foreach (var spot in randomizedSpawnSpots)
             {   
                 GameObject collectible = Instantiate(collectibleObject, spot.position, spot.rotation);
+                onCollectibleSpawn.Raise(collectible);
             }
         }
     }
