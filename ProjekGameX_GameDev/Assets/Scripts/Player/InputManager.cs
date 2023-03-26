@@ -9,9 +9,11 @@ public class InputManager : MonoBehaviour
     [SerializeField] Flashlight flashlighController;
     [SerializeField] PickupCollectibleController pickupController;
     [SerializeField] PlayerCam mouseLook;
+    [SerializeField] PauseMenu pauseMenu;
     PlayerControls controls;
     PlayerControls.GroundMovementActions groundMovement;
     PlayerControls.InteractionActions interactions;
+    PlayerControls.UIActions UIActions;
     Vector2 horizontalInput;
     Vector2 mouseInput;
 
@@ -23,6 +25,7 @@ public class InputManager : MonoBehaviour
         controls = new PlayerControls();
         groundMovement = controls.GroundMovement;
         interactions = controls.Interaction;
+        UIActions = controls.UI;
 
         groundMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
 
@@ -37,6 +40,9 @@ public class InputManager : MonoBehaviour
 
         interactions.ControlFlashlight.performed += _ => flashlighController.SetFlashlightState();
         interactions.PickupCollectibles.performed += _ => onTryPickupCollectible.Raise();
+
+        UIActions.Pause.performed += _ => pauseMenu.SetActivePause();
+        
     }
     private void Update()
     {
