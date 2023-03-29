@@ -42,7 +42,7 @@ public class InputManager : MonoBehaviour
         interactions.PickupCollectibles.performed += _ => onTryPickupCollectible.Raise();
 
         UIActions.Pause.performed += _ => pauseMenu.SetActivePause();
-        
+
     }
     private void Update()
     {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 437a1412085b5ad40b15f5ecdfaab1eb
+guid: 9d0bd4b4a6c0b3644a1af7a95357f338
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: d7cabadbc24c09846bef67360bb05fa2, type: 2}
+      name: Tube_TubeMat
+    second: {fileID: 2100000, guid: 0194f808c3e701d4f80bf88076c6f8cc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,7 +40,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -93,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.001
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

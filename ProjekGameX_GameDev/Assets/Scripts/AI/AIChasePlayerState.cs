@@ -22,7 +22,7 @@ public class AIChasePlayerState : AIState
 
         Vector3 playerDirection = agent.playerTransform.position - agent.transform.position;
         chaseTimer += Time.deltaTime;
-        if ((chaseTimer >= agent.config.ChaseTime && (playerDirection.magnitude > agent.config.maxSightDistance)))
+        if ((chaseTimer >= agent.config.ChaseTime)) //(&& playerDirection.magnitude > agent.config.maxSightDistance)
         {
             agent.randomSpawn.RandomSpawnNearPlayer(60, 80);
             agent.navMeshAgent.isStopped = true;
@@ -39,6 +39,7 @@ public class AIChasePlayerState : AIState
             }
             timer = agent.config.maxTime;
         }
+        Debug.Log(chaseTimer);
     }
     public void Exit(AIAgent agent)
     {
