@@ -15,6 +15,7 @@ public class CollectibleRaycast : MonoBehaviour
     public GameEvent onCollectibleNotFound;
 
     private RaycastHit hit;
+    private RaycastHit lastHit;
 
     // Update is called once per frame
     void Update()
@@ -29,7 +30,6 @@ public class CollectibleRaycast : MonoBehaviour
             collectibleLayerMask
             ))
         {
-            hit.collider.GetComponent<Highlight>()?.ToggleHighlight(true);
             onCollectibleDetected.Raise(hit);
         }
         else
