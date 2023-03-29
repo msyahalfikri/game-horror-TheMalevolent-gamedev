@@ -5,27 +5,39 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [HideInInspector]public bool isPaused = false;
+    [HideInInspector] public bool isPaused = false;
     [SerializeField] private GameObject pauseCanvas;
+    public IntroUI introUI;
 
-   public void SetActiveHud(bool state)
+    public void SetActiveHud(bool state)
     {
         pauseCanvas.SetActive(state);
     }
     public void SetActivePause()
-    {  
-        isPaused = !isPaused;
-        pauseCanvas.SetActive(isPaused);
-        Cursor.visible = isPaused;
-        AudioListener.pause = isPaused;
+    {
+        if (!introUI.introPanelIsActive)
+        {
+            isPaused = !isPaused;
+            pauseCanvas.SetActive(isPaused);
+            AudioListener.pause = isPaused;
+        }
+    }
+    public void PauseGame()
+    {
 
-        if (isPaused){
-            Time.timeScale =  0;
+        if (isPaused)
+        {
+            Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
-        }else{
-            Time.timeScale =  1;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
-        }  
+            Cursor.visible = false;
+        }
+
     }
     public void Restart()
     {
@@ -36,6 +48,10 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        
+
+    }
+    private void Update()
+    {
+        PauseGame();
     }
 }

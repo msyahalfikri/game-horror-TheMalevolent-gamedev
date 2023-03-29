@@ -13,14 +13,13 @@ public class PlayerCam : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
     }
 
     private void Update()
     {
         transform.Rotate(Vector3.up, xMouse * Time.deltaTime);
-        xRotation -= yMouse;
+        xRotation -= yMouse * Time.deltaTime;
         xRotation = Mathf.Clamp(xRotation, -xClamp, xClamp);
         Vector3 targetRotation = transform.eulerAngles;
         targetRotation.x = xRotation;
