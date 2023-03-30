@@ -42,6 +42,7 @@ public class PickupUI : MonoBehaviour
         if (!pickupImage.enabled)
         {
             pickupItem = (RaycastHit) data;
+            Debug.Log(pickupItem.collider);
             pickupItem.collider.GetComponent<Highlight>()?.ToggleHighlight(true);
             lookAt = pickupItem.transform;
             pickupUI.transform.position = mainCam.WorldToScreenPoint(lookAt.position + offset);
