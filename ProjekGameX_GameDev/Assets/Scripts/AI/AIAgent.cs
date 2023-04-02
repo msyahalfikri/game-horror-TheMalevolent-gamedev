@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class AIAgent : MonoBehaviour
 {
+
+    [Header("AI Agent")]
     public AIStateMachine stateMachine;
     public AiStateID initialState;
     public NavMeshAgent navMeshAgent;
@@ -13,9 +15,20 @@ public class AIAgent : MonoBehaviour
     [HideInInspector] public InverseKinematic AiIK;
     public RandomSpawn randomSpawn;
     public AISensor sensor;
-    public AudioClip horrorStinger;
+    public GameObject deadCollider;
 
+    [Header("Audio Sources")]
+    public AudioSource ghostVoice;
+    public AudioSource BGMSource;
     public AudioSource sfxSound;
+
+    [Header("Audio Clips")]
+    public AudioClip horrorStinger;
+    public AudioClip humming;
+    public AudioClip Angry;
+    public AudioClip horrorAmbiance;
+    public AudioClip chaseBGM;
+
     // Start is called before the first frame update
     void Start()
     {

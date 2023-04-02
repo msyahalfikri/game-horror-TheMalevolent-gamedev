@@ -6,8 +6,8 @@ public class Flashlight : MonoBehaviour
 {
     public GameObject flashlight;
 
-    // public AudioSource turnOnSound;
-    // public AudioSource turnOffSound;
+    public AudioClip turnOnSound;
+    public AudioSource interactSoundSource;
 
     [HideInInspector] public bool flashlightIsOn = false;
 
@@ -33,6 +33,6 @@ public class Flashlight : MonoBehaviour
     public void SetFlashlightState()
     {
         flashlightIsOn = !flashlightIsOn;
-        //play flashlight sound
+        interactSoundSource.PlayOneShot(turnOnSound);
     }
 }

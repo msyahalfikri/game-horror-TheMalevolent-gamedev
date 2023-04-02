@@ -13,9 +13,14 @@ public class AIChasePlayerState : AIState
     public void Enter(AIAgent agent)
     {
         agent.sfxSound.PlayOneShot(agent.horrorStinger);
+        agent.ghostVoice.clip = agent.Angry;
+        agent.BGMSource.clip = agent.chaseBGM;
         agent.AiIK.SetTargetTransform(agent.playerTransform);
         chaseTimer = 0;
         agent.navMeshAgent.speed = agent.config.runSpeed;
+        agent.ghostVoice.Play();
+        agent.BGMSource.Play();
+        agent.deadCollider.SetActive(true);
     }
     public void Update(AIAgent agent)
     {
@@ -24,7 +29,7 @@ public class AIChasePlayerState : AIState
         chaseTimer += Time.deltaTime;
         if ((chaseTimer >= agent.config.ChaseTime)) //(&& playerDirection.magnitude > agent.config.maxSightDistance)
         {
-            agent.randomSpawn.RandomSpawnNearPlayer(60, 80);
+            agent.randomSpawn.RandomSpawnNearPlayer();
             agent.navMeshAgent.isStopped = true;
             agent.stateMachine.ChangeState(AiStateID.Idle);
         }
@@ -44,5 +49,10 @@ public class AIChasePlayerState : AIState
     public void Exit(AIAgent agent)
     {
         agent.AiIK.SetTargetTransform(null);
+        agent.ghostVoice.clip = agent.humming;
+        agent.BGMSource.clip = agent.horrorAmbiance;
+        agent.ghostVoice.Play();
+        agent.BGMSource.Play();
+        agent.deadCollider.SetActive(false);
     }
 }

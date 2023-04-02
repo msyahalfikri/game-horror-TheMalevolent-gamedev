@@ -11,6 +11,6 @@ public class CollectibleStatsUI : MonoBehaviour
     public void DisplayText(Component sender, object data)
     {
         int collectibleCollected = (int)data;
-        collectibleText.text = string.Format("Collected Items: {0}", collectibleCollected);
+        collectibleText.text = string.Format("Items Collected: {0}", collectibleCollected);
     }
 }
