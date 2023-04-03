@@ -5,11 +5,11 @@ using TMPro;
 
 public class DeadCollider : MonoBehaviour
 {
-    public PlayerDead playerDie;
-
+    [Header("Events")]
+    public GameEvent onPlayerDeath;
     //Upon collision with another GameObject, this GameObject will reverse direction
     private void OnTriggerEnter(Collider other)
     {
-        playerDie.PlayerDie();
+        onPlayerDeath.Raise();
     }
 }

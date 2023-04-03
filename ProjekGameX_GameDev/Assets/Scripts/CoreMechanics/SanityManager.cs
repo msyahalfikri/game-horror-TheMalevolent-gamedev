@@ -18,37 +18,43 @@ public class SanityManager : MonoBehaviour
     public GameEvent onPlayerDeath;
 
     private bool lookingAtLight = false;
+    private bool isSanityRunning;
 
     // Start is called before the first frame update
     void Start()
     {
         currentSanity = maxSanity;
         onSanityAwake.Raise(maxSanity);
+        isSanityRunning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!lookingAtLight)
+        if (isSanityRunning)
         {
-            currentSanity -= Time.deltaTime * sanityDecay;
-            if (currentSanity < 0)
+            if (!lookingAtLight)
             {
-                currentSanity = 0;
-                onPlayerDeath.Raise();
+                currentSanity -= Time.deltaTime * sanityDecay;
+                if (currentSanity < 0)
+                {
+                    currentSanity = 0;
+                    isSanityRunning = false;
+                    onPlayerDeath.Raise();
+                }
+            } 
+            else
+            {
+                currentSanity += Time.deltaTime * sanityIncrease;
+                if (currentSanity > maxSanity) currentSanity = maxSanity;
             }
-        } 
-        else
-        {
-            currentSanity += Time.deltaTime * sanityIncrease;
-            if (currentSanity > maxSanity) currentSanity = maxSanity;
-        }
 
-        if (currentSanity < insanityThreshold)
-        {
-            onPlayerInsane.Raise(calcInsanityPercent());
+            if (currentSanity < insanityThreshold)
+            {
+                onPlayerInsane.Raise(calcInsanityPercent());
+            }
+            onSanityUpdated.Raise(currentSanity);
         }
-        onSanityUpdated.Raise(currentSanity);
     }
 
     private float calcInsanityPercent()
