@@ -14,7 +14,9 @@ public class PlayerDead : MonoBehaviour
     public PauseMenu pauseMenu;
     [HideInInspector] public bool playerIsDead = false;
     public GameObject CanvasUI;
+    public PlayerCam playerLook;
     // Start is called before the first frame update
+
 
     public void PlayerDie(Component sender, object data)
     {
@@ -24,6 +26,7 @@ public class PlayerDead : MonoBehaviour
         playerIsDead = true;
         CanvasUI.SetActive(false);
         StartCoroutine(ShowGameOverScreen());
+        playerLook.enabled = false;
     }
 
     IEnumerator ShowGameOverScreen()
@@ -31,7 +34,7 @@ public class PlayerDead : MonoBehaviour
         yield return new WaitForSeconds(2f);
         if (playerIsDead)
         {
-            pauseMenu.isPaused=true;
+            pauseMenu.isPaused = true;
             gameOverCanvas.SetActive(true);
         }
 

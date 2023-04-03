@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    [SerializeField] float sensX = 8f;
-    [SerializeField] float sensY = 0.5f;
+    [SerializeField] float sensX;
+    [SerializeField] float sensY;
     [HideInInspector] public float xMouse, yMouse;
     [SerializeField] Transform playerCamera;
     [SerializeField] float xClamp = 85f;
     float xRotation = 0;
-
-    private void Start()
-    {
-
-    }
 
     private void Update()
     {
