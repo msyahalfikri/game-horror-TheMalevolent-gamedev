@@ -16,7 +16,7 @@ public class PlayerDead : MonoBehaviour
     public GameObject CanvasUI;
     // Start is called before the first frame update
 
-    public void PlayerDie()
+    public void PlayerDie(Component sender, object data)
     {
         source.PlayOneShot(jumpscareSound);
         aiGhost.SetActive(false);
@@ -33,9 +33,6 @@ public class PlayerDead : MonoBehaviour
         {
             pauseMenu.isPaused=true;
             gameOverCanvas.SetActive(true);
-            
-            //munculkan Game Over Panel
-            Debug.Log("you are dead!");
         }
 
     }

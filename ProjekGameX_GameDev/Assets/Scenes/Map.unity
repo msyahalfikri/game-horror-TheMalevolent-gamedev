@@ -1466,7 +1466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3589678e234b5ca4aa2ffa938f9ed829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDie: {fileID: 304038991}
+  onPlayerDeath: {fileID: 11400000, guid: e1b299a93f72d7547bfa3de02257387a, type: 2}
 --- !u!135 &51245462
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8026,7 +8026,6 @@ GameObject:
   - component: {fileID: 304038994}
   - component: {fileID: 304038993}
   - component: {fileID: 304038992}
-  - component: {fileID: 304038991}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -8034,27 +8033,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &304038991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304038990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 237cc4e99a2faed418fd06c46d195bfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCam: {fileID: 1329010070}
-  JumpscareSet: {fileID: 2087873582}
-  aiGhost: {fileID: 823119260}
-  source: {fileID: 1843899722}
-  jumpscareSound: {fileID: 8300000, guid: caf61b9773c00d546a7ad766147bd1f3, type: 3}
-  gameOverCanvas: {fileID: 185505217}
-  pauseMenu: {fileID: 834035441}
-  playerIsDead: 0
-  CanvasUI: {fileID: 370344877}
 --- !u!82 &304038992
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8322,6 +8300,7 @@ Transform:
   - {fileID: 2121095991}
   - {fileID: 961537447}
   - {fileID: 1267962695}
+  - {fileID: 653804312}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15158,6 +15137,88 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 430394, guid: 3bab19842fc2b8e44837b5c42192679d, type: 3}
   m_PrefabInstance: {fileID: 651133794}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &653804311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653804312}
+  - component: {fileID: 653804313}
+  - component: {fileID: 653804314}
+  m_Layer: 9
+  m_Name: PlayerDeathController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &653804312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653804311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 304039001}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &653804313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653804311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237cc4e99a2faed418fd06c46d195bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCam: {fileID: 1329010070}
+  JumpscareSet: {fileID: 2087873582}
+  aiGhost: {fileID: 823119260}
+  source: {fileID: 1843899722}
+  jumpscareSound: {fileID: 8300000, guid: caf61b9773c00d546a7ad766147bd1f3, type: 3}
+  gameOverCanvas: {fileID: 185505217}
+  pauseMenu: {fileID: 834035441}
+  playerIsDead: 0
+  CanvasUI: {fileID: 370344877}
+--- !u!114 &653804314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653804311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3d1e682535d7c439a2aef0ab94073d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e1b299a93f72d7547bfa3de02257387a, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 653804313}
+        m_TargetAssemblyTypeName: PlayerDead, Assembly-CSharp
+        m_MethodName: PlayerDie
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &656872251
 GameObject:
   m_ObjectHideFlags: 0
