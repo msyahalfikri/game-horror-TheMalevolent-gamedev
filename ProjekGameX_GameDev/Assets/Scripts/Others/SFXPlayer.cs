@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class SFXPlayer : MonoBehaviour
 {
-    private AudioSource sfxSound;
+    public AudioSource sfxSoundSource;
+    public AudioClip horrorStinger1;
+
+    public void PlayHorrorStinger1()
+    {
+        sfxSoundSource.PlayOneShot(horrorStinger1);
+    }
 
 }

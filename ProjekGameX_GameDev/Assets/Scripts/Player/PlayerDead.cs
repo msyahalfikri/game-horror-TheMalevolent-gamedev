@@ -10,6 +10,7 @@ public class PlayerDead : MonoBehaviour
     public GameObject aiGhost;
     public AudioSource source;
     public AudioClip jumpscareSound;
+    public AudioClip horrorStinger3;
     public GameObject gameOverCanvas;
     public PauseMenu pauseMenu;
     [HideInInspector] public bool playerIsDead = false;
@@ -32,6 +33,7 @@ public class PlayerDead : MonoBehaviour
     IEnumerator ShowGameOverScreen()
     {
         yield return new WaitForSeconds(2f);
+        source.PlayOneShot(horrorStinger3);
         if (playerIsDead)
         {
             pauseMenu.isPaused = true;

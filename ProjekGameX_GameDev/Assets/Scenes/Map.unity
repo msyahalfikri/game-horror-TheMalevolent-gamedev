@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
+  m_FogColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.02
   m_LinearFogStart: 0
@@ -1514,7 +1514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &55386122
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9503,6 +9503,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 232109721}
+        m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
+        m_MethodName: PlayHorrorStinger1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &151539134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10611,7 +10623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &185505218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12013,6 +12025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 232109720}
+  - component: {fileID: 232109721}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -12037,6 +12050,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &232109721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232109719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b74782f5dc3634d937b328e1cd1a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxSoundSource: {fileID: 1843899722}
+  horrorStinger1: {fileID: 8300000, guid: b35a96c2bbbe8be48845306d9580eabb, type: 3}
 --- !u!33 &232601298
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13707,6 +13734,7 @@ MonoBehaviour:
   turnOnSound: {fileID: 8300000, guid: 0f37a9ed6965dee499ee4b01c54a3ac0, type: 3}
   interactSoundSource: {fileID: 1930552353}
   flashlightIsOn: 0
+  useFlashlightText: {fileID: 353165186}
 --- !u!114 &304038995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14456,12 +14484,12 @@ GameObject:
   - component: {fileID: 353165187}
   - component: {fileID: 353165186}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PressFText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &353165185
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14921,7 +14949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &370344878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16804,7 +16832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470116310}
   m_LocalRotation: {x: -0.6764091, y: 0.06557054, z: -0.060666308, w: 0.7310888}
-  m_LocalPosition: {x: 0.0027, y: 0.2096, z: 0.003}
+  m_LocalPosition: {x: 0.0046, y: 0.2201, z: 0.0038}
   m_LocalScale: {x: 0.43325615, y: 0.4332565, z: 0.43325642}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16824,8 +16852,8 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.8132147, b: 0.6462264, a: 1}
   m_Intensity: 2
-  m_Range: 35
-  m_SpotAngle: 55
+  m_Range: 55
+  m_SpotAngle: 60
   m_InnerSpotAngle: 5
   m_CookieSize: 10
   m_Shadows:
@@ -40776,7 +40804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &823119261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63521,7 +63549,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -82131,7 +82159,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a96bbc7b63c4a50418c99f218132a74a, type: 2}
-  - {fileID: 8578991229988381114, guid: b1f315cb1d32d21429e45007cd1b8b8c, type: 3}
+  - {fileID: 2100000, guid: 482fec4c530a8a8498bf083c786fb69d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94393,7 +94421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2103923295
 RectTransform:
   m_ObjectHideFlags: 0

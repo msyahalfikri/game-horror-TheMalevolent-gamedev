@@ -31,14 +31,14 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            AudioListener.pause = true;
+            // AudioListener.pause = true;
         }
         else
         {
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            AudioListener.pause = false;
+            // AudioListener.pause = false;
         }
 
     }

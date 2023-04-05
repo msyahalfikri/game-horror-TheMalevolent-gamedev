@@ -47,6 +47,11 @@ public class AIChasePlayerState : AIState
             timer = agent.config.maxTime;
         }
         Debug.Log(chaseTimer);
+
+        if (agent.playerDead.playerIsDead)
+        {
+            agent.BGMSource.Stop();
+        }
     }
     public void Exit(AIAgent agent)
     {

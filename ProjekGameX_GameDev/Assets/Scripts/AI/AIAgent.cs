@@ -16,6 +16,7 @@ public class AIAgent : MonoBehaviour
     public RandomSpawn randomSpawn;
     public AISensor sensor;
     public GameObject deadCollider;
+    public PlayerDead playerDead;
 
     [Header("Audio Sources")]
     public AudioSource ghostVoice;
@@ -28,6 +29,7 @@ public class AIAgent : MonoBehaviour
     public AudioClip Angry;
     public AudioClip horrorAmbiance;
     public AudioClip chaseBGM;
+
 
     // Start is called before the first frame update
     void Start()
