@@ -12,14 +12,16 @@ public class AIChasePlayerState : AIState
     }
     public void Enter(AIAgent agent)
     {
+        agent.ghostVoice.Stop();
         agent.sfxSound.PlayOneShot(agent.horrorStinger);
-        agent.ghostVoice.clip = agent.Angry;
+        agent.ghostVoice.PlayOneShot(agent.Angry);
         agent.BGMSource.clip = agent.chaseBGM;
+        agent.BGMSource.Play();
+
         agent.AiIK.SetTargetTransform(agent.playerTransform);
         chaseTimer = 0;
         agent.navMeshAgent.speed = agent.config.runSpeed;
-        agent.ghostVoice.Play();
-        agent.BGMSource.Play();
+
         agent.deadCollider.SetActive(true);
     }
     public void Update(AIAgent agent)

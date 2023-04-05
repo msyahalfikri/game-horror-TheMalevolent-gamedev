@@ -9,7 +9,7 @@ public class PlayerCam : MonoBehaviour
     [HideInInspector] public float xMouse, yMouse;
     [SerializeField] Transform playerCamera;
     [SerializeField] float xClamp = 85f;
-    float xRotation = 0;
+    float xRotation = 0;        
 
     private void Update()
     {
