@@ -42,4 +42,9 @@ public class CollectibleStats : MonoBehaviour
             }
         }
     }
+
+    public void OnShowGameOver(Component sender, object data)
+    {
+        onCollectibleStatsUpdated.Raise(collectedCollectible);
+    }
 }

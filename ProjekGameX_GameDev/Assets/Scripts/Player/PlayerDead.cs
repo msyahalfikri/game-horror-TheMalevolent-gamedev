@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDead : MonoBehaviour
 {
+    [Header("General")]
     public Camera playerCam;
     public GameObject JumpscareSet;
     public GameObject aiGhost;
@@ -18,6 +19,8 @@ public class PlayerDead : MonoBehaviour
     public PlayerCam playerLook;
     // Start is called before the first frame update
 
+    [Header("Events")]
+    public GameEvent onShowGameOverCanvas;
 
     public void PlayerDie(Component sender, object data)
     {
@@ -38,6 +41,7 @@ public class PlayerDead : MonoBehaviour
         {
             pauseMenu.isPaused = true;
             gameOverCanvas.SetActive(true);
+            onShowGameOverCanvas.Raise();
         }
 
     }
