@@ -15602,7 +15602,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.8755179, b: 0.6933962, a: 1}
-  m_Intensity: 1.3
+  m_Intensity: 2
   m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -28575,7 +28575,7 @@ MonoBehaviour:
   currentSanity: 0
   maxSanity: 1000
   insanityThreshold: 300
-  sanityDecay: 90
+  sanityDecay: 0
   sanityIncrease: 100
   onSanityAwake: {fileID: 11400000, guid: 8b964d151b408494692821e33f257394, type: 2}
   onSanityUpdated: {fileID: 11400000, guid: 84216e3e82ef0ee44860608a8dfd97af, type: 2}
@@ -41030,7 +41030,7 @@ MonoBehaviour:
   angle: 85.1
   height: 4.06
   meshColor: {r: 1, g: 0.9527312, b: 0, a: 0.1764706}
-  scanFrequency: 30
+  scanFrequency: 50
   layers:
     serializedVersion: 2
     m_Bits: 1536
@@ -41082,7 +41082,7 @@ MonoBehaviour:
   randomSpawn: {fileID: 0}
   sensor: {fileID: 0}
   deadCollider: {fileID: 51245459}
-  playerDead: {fileID: 0}
+  playerDead: {fileID: 653804313}
   ghostVoice: {fileID: 425947600}
   BGMSource: {fileID: 359482809}
   sfxSound: {fileID: 1843899722}
@@ -73926,7 +73926,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.8755179, b: 0.6933962, a: 1}
-  m_Intensity: 1.3
+  m_Intensity: 2
   m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -83088,7 +83088,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.8755179, b: 0.6933962, a: 1}
-  m_Intensity: 1.3
+  m_Intensity: 2
   m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -92781,7 +92781,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 6.77
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 69.7
   m_InnerSpotAngle: 21.80208
@@ -95407,7 +95407,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.8755179, b: 0.6933962, a: 1}
-  m_Intensity: 1.3
+  m_Intensity: 2
   m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
