@@ -10022,6 +10022,115 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 494596, guid: acb5b460622c8ee4b825a3e68c33c1b6, type: 3}
   m_PrefabInstance: {fileID: 157662606}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &159874226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 159874229}
+  - component: {fileID: 159874228}
+  - component: {fileID: 159874227}
+  - component: {fileID: 159874230}
+  m_Layer: 0
+  m_Name: GameOverManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &159874227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159874226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3d1e682535d7c439a2aef0ab94073d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e9a483f7c476d53499d05390f274f4bd, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 159874228}
+        m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
+        m_MethodName: ShowCanvas
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &159874228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159874226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd2566603ff25b479aaabb5f2f3c9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverCanvas: {fileID: 185505217}
+  aiGhost: {fileID: 823119260}
+  CanvasUI: {fileID: 370344877}
+  playerLook: {fileID: 304038995}
+  pauseMenu: {fileID: 834035441}
+  onShowGameOver: {fileID: 11400000, guid: 7ca252e3f2d767444a2c0923d9141913, type: 2}
+--- !u!4 &159874229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159874226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 479.93378, y: 213.1444, z: -3.584393}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 185505221}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &159874230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159874226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3d1e682535d7c439a2aef0ab94073d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 089932517fd18334f8adb8741f6b3a43, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 159874228}
+        m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
+        m_MethodName: ShowCanvas
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &163127932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10589,8 +10698,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185505217}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3.584393}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10599,12 +10708,12 @@ RectTransform:
   - {fileID: 663113385}
   - {fileID: 1416038988}
   - {fileID: 145675023}
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 159874229}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -479.93378, y: -213.1444}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1001 &187167573
@@ -11945,7 +12054,7 @@ Transform:
   - {fileID: 1843899723}
   - {fileID: 359482808}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &232109721
 MonoBehaviour:
@@ -12494,7 +12603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76c4343e7d43db49b0808a2a0e03878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 180
+  timeRemaining: 20
   timerIsRunning: 0
   onTimerStart: {fileID: 11400000, guid: dd6884392f82d2c478928924fbeaebb1, type: 2}
   onTimerUpdated: {fileID: 11400000, guid: 57b93b2d9f3a80442bd3ebadc8490752, type: 2}
@@ -21180,18 +21289,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237cc4e99a2faed418fd06c46d195bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCam: {fileID: 1329010070}
   JumpscareSet: {fileID: 2087873582}
-  aiGhost: {fileID: 823119260}
   source: {fileID: 1843899722}
   jumpscareSound: {fileID: 8300000, guid: caf61b9773c00d546a7ad766147bd1f3, type: 3}
   horrorStinger3: {fileID: 0}
-  gameOverCanvas: {fileID: 185505217}
   pauseMenu: {fileID: 834035441}
-  playerIsDead: 0
-  CanvasUI: {fileID: 370344877}
   playerLook: {fileID: 304038995}
-  onShowGameOverCanvas: {fileID: 11400000, guid: 7ca252e3f2d767444a2c0923d9141913, type: 2}
+  aiGhost: {fileID: 823119260}
+  CanvasUI: {fileID: 370344877}
+  playerIsDead: 0
+  onGameOver: {fileID: 11400000, guid: e9a483f7c476d53499d05390f274f4bd, type: 2}
 --- !u!114 &653804314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28444,8 +28551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSanity: 0
   maxSanity: 1000
-  insanityThreshold: 500
-  sanityDecay: 100
+  insanityThreshold: 300
+  sanityDecay: 0
   sanityIncrease: 100
   onSanityAwake: {fileID: 11400000, guid: 8b964d151b408494692821e33f257394, type: 2}
   onSanityUpdated: {fileID: 11400000, guid: 84216e3e82ef0ee44860608a8dfd97af, type: 2}
@@ -77416,7 +77523,7 @@ Transform:
   - {fileID: 1140411491}
   - {fileID: 1142185677}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1579515510
 PrefabInstance:

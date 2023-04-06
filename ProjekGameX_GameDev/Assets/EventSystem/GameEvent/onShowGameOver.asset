@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e29559f3dedbe144e877643c85c5f0c2, type: 3}
-  m_Name: onShowGameOverCanvas
+  m_Name: onShowGameOver
   m_EditorClassIdentifier: 
   listeners: []

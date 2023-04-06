@@ -6,31 +6,31 @@ using UnityEngine.SceneManagement;
 public class PlayerDead : MonoBehaviour
 {
     [Header("General")]
-    public Camera playerCam;
     public GameObject JumpscareSet;
-    public GameObject aiGhost;
     public AudioSource source;
     public AudioClip jumpscareSound;
     public AudioClip horrorStinger3;
-    public GameObject gameOverCanvas;
     public PauseMenu pauseMenu;
-    [HideInInspector] public bool playerIsDead = false;
-    public GameObject CanvasUI;
     public PlayerCam playerLook;
-    // Start is called before the first frame update
+    public GameObject aiGhost;
+    public GameObject CanvasUI;
+
+
+    [HideInInspector] public bool playerIsDead = false;
 
     [Header("Events")]
-    public GameEvent onShowGameOverCanvas;
+    public GameEvent onGameOver;
 
     public void PlayerDie(Component sender, object data)
     {
         source.PlayOneShot(jumpscareSound);
-        aiGhost.SetActive(false);
         JumpscareSet.SetActive(true);
         playerIsDead = true;
-        CanvasUI.SetActive(false);
-        StartCoroutine(ShowGameOverScreen());
         playerLook.enabled = false;
+        aiGhost.SetActive(false);
+        CanvasUI.SetActive(false);
+        
+        StartCoroutine(ShowGameOverScreen());
     }
 
     IEnumerator ShowGameOverScreen()
@@ -40,8 +40,7 @@ public class PlayerDead : MonoBehaviour
         if (playerIsDead)
         {
             pauseMenu.isPaused = true;
-            gameOverCanvas.SetActive(true);
-            onShowGameOverCanvas.Raise();
+            onGameOver.Raise();
         }
 
     }
