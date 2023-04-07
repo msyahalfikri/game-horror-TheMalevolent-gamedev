@@ -13278,7 +13278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76c4343e7d43db49b0808a2a0e03878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 360
+  timeRemaining: 300
   timerIsRunning: 0
   onTimerStart: {fileID: 11400000, guid: dd6884392f82d2c478928924fbeaebb1, type: 2}
   onTimerUpdated: {fileID: 11400000, guid: 57b93b2d9f3a80442bd3ebadc8490752, type: 2}
@@ -14698,8 +14698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e5b12481c5f5946a731b445ed7810c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 15
-  sensY: 15
+  sensX: 8
+  sensY: 8
   xMouse: 0
   yMouse: 0
   playerCamera: {fileID: 1087006162}
@@ -30236,10 +30236,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSanity: 0
-  maxSanity: 1100
-  insanityThreshold: 240
-  sanityDecay: 40
-  sanityIncrease: 220
+  maxSanity: 1000
+  insanityThreshold: 300
+  sanityDecay: 20
+  sanityIncrease: 100
   onSanityAwake: {fileID: 11400000, guid: 8b964d151b408494692821e33f257394, type: 2}
   onSanityUpdated: {fileID: 11400000, guid: 84216e3e82ef0ee44860608a8dfd97af, type: 2}
   onPlayerInsane: {fileID: 11400000, guid: f94a9cd4d7467894b9fb7e827a0244fc, type: 2}
@@ -43274,7 +43274,7 @@ MonoBehaviour:
   angle: 85.1
   height: 4.06
   meshColor: {r: 1, g: 0.9527312, b: 0, a: 0.1764706}
-  scanFrequency: 30
+  scanFrequency: 50
   layers:
     serializedVersion: 2
     m_Bits: 1536
@@ -43326,7 +43326,7 @@ MonoBehaviour:
   randomSpawn: {fileID: 0}
   sensor: {fileID: 0}
   deadCollider: {fileID: 51245459}
-  playerDead: {fileID: 0}
+  playerDead: {fileID: 653804313}
   ghostVoice: {fileID: 425947600}
   BGMSource: {fileID: 359482809}
   sfxSound: {fileID: 1843899722}
@@ -43922,7 +43922,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -43979,14 +43979,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836823809}
-  m_LocalRotation: {x: -0.45114356, y: 0.6744155, z: 0.5812324, w: 0.06166053}
+  m_LocalRotation: {x: -0.15932423, y: 0.7125067, z: 0.6295652, w: 0.26570234}
   m_LocalPosition: {x: -14.206781, y: 5.329128, z: -27.387136}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 656872252}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 237.1, y: 54.33, z: -278.76}
+  m_LocalEulerAnglesHint: {x: 259.053, y: -69.630005, z: -145.51599}
 --- !u!1 &841899811
 GameObject:
   m_ObjectHideFlags: 0
@@ -76218,7 +76218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395244617}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.1, y: -1.5, z: 0.89999986}
+  m_LocalPosition: {x: 43.1, y: -1.45, z: 0.89999986}
   m_LocalScale: {x: 100, y: 0.2, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96829,7 +96829,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 6.77
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 69.7
   m_InnerSpotAngle: 21.80208
@@ -97675,7 +97675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 494596, guid: acb5b460622c8ee4b825a3e68c33c1b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 66.86567
+      value: 66.87
       objectReference: {fileID: 0}
     - target: {fileID: 494596, guid: acb5b460622c8ee4b825a3e68c33c1b6, type: 3}
       propertyPath: m_LocalRotation.w
