@@ -14,6 +14,7 @@ public class PlayerDead : MonoBehaviour
     public PlayerCam playerLook;
     public GameObject aiGhost;
     public GameObject CanvasUI;
+    public Flashlight flashlightController;
 
 
     [HideInInspector] public bool playerIsDead = false;
@@ -29,7 +30,8 @@ public class PlayerDead : MonoBehaviour
         playerLook.enabled = false;
         aiGhost.SetActive(false);
         CanvasUI.SetActive(false);
-        
+        flashlightController.flashlightIsOn = false;
+
         StartCoroutine(ShowGameOverScreen());
     }
 
