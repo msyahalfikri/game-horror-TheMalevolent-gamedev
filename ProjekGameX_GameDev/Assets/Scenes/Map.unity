@@ -22983,6 +22983,7 @@ MonoBehaviour:
   playerLook: {fileID: 304038995}
   aiGhost: {fileID: 823119260}
   CanvasUI: {fileID: 370344877}
+  flashlightController: {fileID: 304038994}
   playerIsDead: 0
   onGameOver: {fileID: 11400000, guid: e9a483f7c476d53499d05390f274f4bd, type: 2}
 --- !u!114 &653804314
