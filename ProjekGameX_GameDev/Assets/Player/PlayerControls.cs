@@ -255,6 +255,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleJournal"",
+                    ""type"": ""Button"",
+                    ""id"": ""53d702ea-b743-41ab-812a-ed0c0d13d8a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JournalNext"",
+                    ""type"": ""Button"",
+                    ""id"": ""70162b1f-9181-4964-982f-c5a545280fd0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JournalPrev"",
+                    ""type"": ""Button"",
+                    ""id"": ""d6889945-bd55-4dea-9895-938bf7c26318"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -266,6 +293,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d407f2bd-4078-44a4-8cc8-0f44694b3a8b"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleJournal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aac13651-066a-4593-9f46-db43252f43a6"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JournalNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""705933bb-ba28-4439-948d-4d096ab392a9"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JournalPrev"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -289,6 +349,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        m_UI_ToggleJournal = m_UI.FindAction("ToggleJournal", throwIfNotFound: true);
+        m_UI_JournalNext = m_UI.FindAction("JournalNext", throwIfNotFound: true);
+        m_UI_JournalPrev = m_UI.FindAction("JournalPrev", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -463,11 +526,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Pause;
+    private readonly InputAction m_UI_ToggleJournal;
+    private readonly InputAction m_UI_JournalNext;
+    private readonly InputAction m_UI_JournalPrev;
     public struct UIActions
     {
         private @PlayerControls m_Wrapper;
         public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
+        public InputAction @ToggleJournal => m_Wrapper.m_UI_ToggleJournal;
+        public InputAction @JournalNext => m_Wrapper.m_UI_JournalNext;
+        public InputAction @JournalPrev => m_Wrapper.m_UI_JournalPrev;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -480,6 +549,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                @ToggleJournal.started -= m_Wrapper.m_UIActionsCallbackInterface.OnToggleJournal;
+                @ToggleJournal.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnToggleJournal;
+                @ToggleJournal.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnToggleJournal;
+                @JournalNext.started -= m_Wrapper.m_UIActionsCallbackInterface.OnJournalNext;
+                @JournalNext.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnJournalNext;
+                @JournalNext.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnJournalNext;
+                @JournalPrev.started -= m_Wrapper.m_UIActionsCallbackInterface.OnJournalPrev;
+                @JournalPrev.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnJournalPrev;
+                @JournalPrev.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnJournalPrev;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -487,6 +565,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @ToggleJournal.started += instance.OnToggleJournal;
+                @ToggleJournal.performed += instance.OnToggleJournal;
+                @ToggleJournal.canceled += instance.OnToggleJournal;
+                @JournalNext.started += instance.OnJournalNext;
+                @JournalNext.performed += instance.OnJournalNext;
+                @JournalNext.canceled += instance.OnJournalNext;
+                @JournalPrev.started += instance.OnJournalPrev;
+                @JournalPrev.performed += instance.OnJournalPrev;
+                @JournalPrev.canceled += instance.OnJournalPrev;
             }
         }
     }
@@ -508,5 +595,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnPause(InputAction.CallbackContext context);
+        void OnToggleJournal(InputAction.CallbackContext context);
+        void OnJournalNext(InputAction.CallbackContext context);
+        void OnJournalPrev(InputAction.CallbackContext context);
     }
 }

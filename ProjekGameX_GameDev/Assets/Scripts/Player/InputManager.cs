@@ -19,6 +19,11 @@ public class InputManager : MonoBehaviour
 
     [Header("Events")]
     public GameEvent onTryPickupCollectible;
+    public GameEvent onToggleJournal;
+    public GameEvent onJournalNext;
+    public GameEvent onJournalPrev;
+
+    private bool isJournalActive = false;
 
     private void Awake()
     {
@@ -40,9 +45,14 @@ public class InputManager : MonoBehaviour
 
         interactions.ControlFlashlight.performed += _ => flashlighController.SetFlashlightState();
         interactions.PickupCollectibles.performed += _ => onTryPickupCollectible.Raise();
-
+   
         UIActions.Pause.performed += _ => pauseMenu.SetActivePause();
-
+        UIActions.ToggleJournal.performed += _ => {
+            isJournalActive = !isJournalActive;
+            onToggleJournal.Raise();
+        };
+        UIActions.JournalNext.performed += _ => onJournalNext.Raise();
+        UIActions.JournalPrev.performed += _ => onJournalPrev.Raise();
     }
     private void Update()
     {
@@ -57,5 +67,11 @@ public class InputManager : MonoBehaviour
     private void OnDestroy()
     {
         controls.Disable();
+    }
+
+    public IEnumerator waitJournalClose() 
+    {
+        yield return new WaitForSeconds(1f);
+        isJournalActive = false;
     }
 }
