@@ -15,4 +15,25 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+
+public GameObject optionsPanel;
+
+    public void OnPlayButtonClick()
+    {
+        // Show/hide the options panel
+        optionsPanel.SetActive(!optionsPanel.activeSelf);
+    }
+
+    public void OnStoryModeButtonClick()
+    {
+        // Load StoryMode scene
+        SceneManager.LoadScene("StoryMode");
+    }
+
+    public void OnEndlessModeButtonClick()
+    {
+        // Load EndlessMode scene
+        SceneManager.LoadScene("EndlessMode");
+    }
+
 }
