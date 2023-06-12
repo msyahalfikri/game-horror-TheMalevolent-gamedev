@@ -1597,7 +1597,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 98
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!1001 &55493356
 PrefabInstance:
@@ -8593,6 +8593,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4592389587850013149, guid: f9f89475dbcb16d4f9d2377b3d8c84f3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 99
+      objectReference: {fileID: 0}
     - target: {fileID: 4592389588480938272, guid: f9f89475dbcb16d4f9d2377b3d8c84f3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8645,8 +8649,23 @@ PrefabInstance:
       propertyPath: transition
       value: 
       objectReference: {fileID: 866925087}
+    - target: {fileID: 4592389588480938279, guid: f9f89475dbcb16d4f9d2377b3d8c84f3, type: 3}
+      propertyPath: transitionTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f89475dbcb16d4f9d2377b3d8c84f3, type: 3}
+--- !u!114 &127081012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4592389588480938279, guid: f9f89475dbcb16d4f9d2377b3d8c84f3, type: 3}
+  m_PrefabInstance: {fileID: 127081011}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28df5e38dc505bf4d994e642ff2446e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &128484316
 GameObject:
   m_ObjectHideFlags: 0
@@ -43771,6 +43790,7 @@ MonoBehaviour:
   pauseCanvas: {fileID: 2029887730}
   introUI: {fileID: 834035440}
   playerDead: {fileID: 653804313}
+  levelLoader: {fileID: 127081012}
 --- !u!4 &834035442
 Transform:
   m_ObjectHideFlags: 0
