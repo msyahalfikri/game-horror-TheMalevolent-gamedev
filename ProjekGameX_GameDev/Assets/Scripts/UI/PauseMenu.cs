@@ -15,6 +15,9 @@ public class PauseMenu : MonoBehaviour
 
     public LevelLoaderScript levelLoader;
 
+    public bool menuPaused = false;
+    public bool journalPaused = false;
+
     public void SetActiveHud(bool state)
     {
         pauseCanvas.SetActive(state);
@@ -24,9 +27,21 @@ public class PauseMenu : MonoBehaviour
         if (!introUI.introPanelIsActive && !playerDead.playerIsDead)
         {
             isPaused = !isPaused;
+            menuPaused = !menuPaused;
             pauseCanvas.SetActive(isPaused);
         }
     }
+
+    public void SetActivePauseWithEvent(Component component, object data)
+    {
+        bool active = (bool)data;
+        if (!introUI.introPanelIsActive && !playerDead.playerIsDead)
+        {
+            isPaused = active;
+            journalPaused = active;
+        }
+    }
+
     public void PauseGame()
     {
 

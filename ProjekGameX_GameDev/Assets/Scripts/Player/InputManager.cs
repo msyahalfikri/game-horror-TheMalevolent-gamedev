@@ -23,8 +23,6 @@ public class InputManager : MonoBehaviour
     public GameEvent onJournalNext;
     public GameEvent onJournalPrev;
 
-    private bool isJournalActive = false;
-
     private void Awake()
     {
         controls = new PlayerControls();
@@ -47,11 +45,6 @@ public class InputManager : MonoBehaviour
         interactions.PickupCollectibles.performed += _ => onTryPickupCollectible.Raise();
 
         UIActions.Pause.performed += _ => pauseMenu.SetActivePause();
-        UIActions.ToggleJournal.performed += _ =>
-        {
-            isJournalActive = !isJournalActive;
-            onToggleJournal.Raise();
-        };
         UIActions.JournalNext.performed += _ => onJournalNext.Raise();
         UIActions.JournalPrev.performed += _ => onJournalPrev.Raise();
     }
@@ -63,12 +56,29 @@ public class InputManager : MonoBehaviour
         if (pauseMenu.isPaused)
         {
             interactions.ControlFlashlight.Disable();
-            UIActions.ToggleJournal.Disable();
         }
         else
         {
             interactions.ControlFlashlight.Enable();
+        }
+
+        if (pauseMenu.journalPaused)
+        {
+            UIActions.Pause.Disable();
+        } else
+        {
+            UIActions.Pause.Enable();
+        }
+
+        if (pauseMenu.menuPaused)
+        {
+            UIActions.ToggleJournal.Disable();
+        } else 
+        {
             UIActions.ToggleJournal.Enable();
+            UIActions.ToggleJournal.performed += _ => {
+                onToggleJournal.Raise(!pauseMenu.journalPaused);
+            };
         }
     }
 
@@ -79,11 +89,5 @@ public class InputManager : MonoBehaviour
     private void OnDestroy()
     {
         controls.Disable();
-    }
-
-    public IEnumerator waitJournalClose()
-    {
-        yield return new WaitForSeconds(1f);
-        isJournalActive = false;
     }
 }
