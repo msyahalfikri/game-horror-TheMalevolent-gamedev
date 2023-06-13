@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     public IntroUI introUI;
     public PlayerDead playerDead;
 
+    public InputManager inputManager;
+
     public LevelLoaderScript levelLoader;
 
     public void SetActiveHud(bool state)

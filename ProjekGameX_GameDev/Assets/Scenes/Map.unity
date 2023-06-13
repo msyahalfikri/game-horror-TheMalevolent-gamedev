@@ -43790,6 +43790,7 @@ MonoBehaviour:
   pauseCanvas: {fileID: 2029887730}
   introUI: {fileID: 834035440}
   playerDead: {fileID: 653804313}
+  inputManager: {fileID: 304038999}
   levelLoader: {fileID: 127081012}
 --- !u!4 &834035442
 Transform:

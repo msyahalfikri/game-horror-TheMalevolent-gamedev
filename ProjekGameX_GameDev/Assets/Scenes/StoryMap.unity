@@ -12017,8 +12017,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 7.147827, y: -1.1912842}
+  m_SizeDelta: {x: 38.1217, y: 30.9738}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &218547826
 MonoBehaviour:
@@ -12033,7 +12033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.40392157}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -43787,6 +43787,7 @@ MonoBehaviour:
   pauseCanvas: {fileID: 2029887730}
   introUI: {fileID: 834035440}
   playerDead: {fileID: 653804313}
+  inputManager: {fileID: 304038999}
   levelLoader: {fileID: 1810303259}
 --- !u!4 &834035442
 Transform:

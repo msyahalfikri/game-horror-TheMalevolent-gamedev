@@ -45,9 +45,10 @@ public class InputManager : MonoBehaviour
 
         interactions.ControlFlashlight.performed += _ => flashlighController.SetFlashlightState();
         interactions.PickupCollectibles.performed += _ => onTryPickupCollectible.Raise();
-   
+
         UIActions.Pause.performed += _ => pauseMenu.SetActivePause();
-        UIActions.ToggleJournal.performed += _ => {
+        UIActions.ToggleJournal.performed += _ =>
+        {
             isJournalActive = !isJournalActive;
             onToggleJournal.Raise();
         };
@@ -58,6 +59,17 @@ public class InputManager : MonoBehaviour
     {
         movement.ReceiveInput(horizontalInput);
         mouseLook.ReceiveInput(mouseInput);
+
+        if (pauseMenu.isPaused)
+        {
+            interactions.ControlFlashlight.Disable();
+            UIActions.ToggleJournal.Disable();
+        }
+        else
+        {
+            interactions.ControlFlashlight.Enable();
+            UIActions.ToggleJournal.Enable();
+        }
     }
 
     private void OnEnable()
@@ -69,7 +81,7 @@ public class InputManager : MonoBehaviour
         controls.Disable();
     }
 
-    public IEnumerator waitJournalClose() 
+    public IEnumerator waitJournalClose()
     {
         yield return new WaitForSeconds(1f);
         isJournalActive = false;
