@@ -11,6 +11,10 @@ public class PauseMenu : MonoBehaviour
     public IntroUI introUI;
     public PlayerDead playerDead;
 
+    public InputManager inputManager;
+
+    public LevelLoaderScript levelLoader;
+
     public void SetActiveHud(bool state)
     {
         pauseCanvas.SetActive(state);
@@ -49,8 +53,8 @@ public class PauseMenu : MonoBehaviour
     }
     public void BacktoMainMenu()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SetActivePause();
+        levelLoader.LoadMainMenu();
 
     }
     private void Update()

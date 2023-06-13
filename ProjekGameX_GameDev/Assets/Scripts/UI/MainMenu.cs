@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 public class MainMenu : MonoBehaviour
 {
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        DOTween.Clear(true);    
+        DOTween.Clear(true);
     }
     public void QuitGame()
     {
@@ -16,7 +22,7 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-public GameObject optionsPanel;
+    public GameObject optionsPanel;
 
     public void OnPlayButtonClick()
     {
