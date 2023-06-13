@@ -70,10 +70,14 @@ public class PauseMenu : MonoBehaviour
     {
         SetActivePause();
         levelLoader.LoadMainMenu();
-
     }
     private void Update()
     {
         PauseGame();
+    }
+
+    public void setTimeScaleOne()
+    {
+        isPaused = false;
     }
 }

@@ -27,6 +27,8 @@ public class JournalController : MonoBehaviour
     public Sprite epilogue;
 
     private bool isActive = false;
+
+    public bool allItemsCollected = false;
     private int activePageNum = 0;
     public Sprite[] pages;
     private Stack<int> collectiblePages;
@@ -40,8 +42,8 @@ public class JournalController : MonoBehaviour
 
     void Start()
     {
-        pages = new Sprite[10] {prologue, lockedEntry, lockedEntry, lockedEntry, lockedEntry, lockedEntry, lockedEntry, lockedEntry, lockedEntry, lockedEntry};
-        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8};
+        pages = new Sprite[10] { prologue, lockedEntry, lockedEntry, lockedEntry, lockedEntry, lockedEntry, lockedEntry, lockedEntry, lockedEntry, lockedEntry };
+        int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8 };
         collectiblePages = Shuffle(numbers);
         Display(false);
         ChangePageSprite(pages[activePageNum]);
@@ -60,7 +62,8 @@ public class JournalController : MonoBehaviour
                 byte opacity = (byte)(255 * (textTimer / THRESHOLD));
                 pickupText.GetComponent<TextMeshProUGUI>().faceColor = new Color32(255, 255, 255, opacity);
             }
-            if (textTimer < 0) {
+            if (textTimer < 0)
+            {
                 textActive = false;
                 pickupText.SetActive(false);
             }
@@ -108,7 +111,8 @@ public class JournalController : MonoBehaviour
         overlay.SetActive(active);
     }
 
-    public void AddPage(Component sender, object data) {
+    public void AddPage(Component sender, object data)
+    {
         int page = collectiblePages.Pop();
         switch (page)
         {
@@ -140,10 +144,13 @@ public class JournalController : MonoBehaviour
         activePageNum = 0;
         if (collectiblePages.Count == 0)
         {
+            allItemsCollected = true;
             pages[9] = epilogue;
             DisplayPickupText(null, "All Journal Entry Collected, Time to Escape!");
 
-        } else {
+        }
+        else
+        {
             DisplayPickupText(null, "Journal Entry " + (page + 1) + " Added");
         }
     }
@@ -155,7 +162,7 @@ public class JournalController : MonoBehaviour
         var list = new List<T>(values);
         var stack = new Stack<T>();
 
-        while(list.Count > 0)
+        while (list.Count > 0)
         {
             // Get the next item at random.
             var index = rand.Next(0, list.Count);

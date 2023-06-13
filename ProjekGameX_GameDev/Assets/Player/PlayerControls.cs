@@ -216,6 +216,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""0269c053-29b3-4658-9b90-26240a75f2d9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -238,6 +247,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PickupCollectibles"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e8a3ab1-9e24-4453-ab3d-a238b6cb7526"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -346,6 +366,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_ControlFlashlight = m_Interaction.FindAction("ControlFlashlight", throwIfNotFound: true);
         m_Interaction_PickupCollectibles = m_Interaction.FindAction("PickupCollectibles", throwIfNotFound: true);
+        m_Interaction_Escape = m_Interaction.FindAction("Escape", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
@@ -486,12 +507,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IInteractionActions m_InteractionActionsCallbackInterface;
     private readonly InputAction m_Interaction_ControlFlashlight;
     private readonly InputAction m_Interaction_PickupCollectibles;
+    private readonly InputAction m_Interaction_Escape;
     public struct InteractionActions
     {
         private @PlayerControls m_Wrapper;
         public InteractionActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @ControlFlashlight => m_Wrapper.m_Interaction_ControlFlashlight;
         public InputAction @PickupCollectibles => m_Wrapper.m_Interaction_PickupCollectibles;
+        public InputAction @Escape => m_Wrapper.m_Interaction_Escape;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -507,6 +530,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @PickupCollectibles.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnPickupCollectibles;
                 @PickupCollectibles.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnPickupCollectibles;
                 @PickupCollectibles.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnPickupCollectibles;
+                @Escape.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnEscape;
             }
             m_Wrapper.m_InteractionActionsCallbackInterface = instance;
             if (instance != null)
@@ -517,6 +543,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @PickupCollectibles.started += instance.OnPickupCollectibles;
                 @PickupCollectibles.performed += instance.OnPickupCollectibles;
                 @PickupCollectibles.canceled += instance.OnPickupCollectibles;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
             }
         }
     }
@@ -591,6 +620,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnControlFlashlight(InputAction.CallbackContext context);
         void OnPickupCollectibles(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

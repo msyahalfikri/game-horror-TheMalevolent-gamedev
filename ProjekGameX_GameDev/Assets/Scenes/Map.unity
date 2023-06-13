@@ -9470,7 +9470,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 834035441}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: BacktoMainMenu
+        m_MethodName: setTimeScaleOne
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 127081012}
+        m_TargetAssemblyTypeName: LevelLoaderScript, Assembly-CSharp
+        m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -43792,6 +43804,8 @@ MonoBehaviour:
   playerDead: {fileID: 653804313}
   inputManager: {fileID: 304038999}
   levelLoader: {fileID: 127081012}
+  menuPaused: 0
+  journalPaused: 0
 --- !u!4 &834035442
 Transform:
   m_ObjectHideFlags: 0

@@ -38,4 +38,8 @@ public class LevelLoaderScript : MonoBehaviour
     {
         StartCoroutine(LoadLevel(3));
     }
+    public void LoadEnding()
+    {
+        StartCoroutine(LoadLevel(4));
+    }
 }

@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] PickupCollectibleController pickupController;
     [SerializeField] PlayerCam mouseLook;
     [SerializeField] PauseMenu pauseMenu;
+    [SerializeField] EscapeController escapeController;
     PlayerControls controls;
     PlayerControls.GroundMovementActions groundMovement;
     PlayerControls.InteractionActions interactions;
@@ -43,6 +44,7 @@ public class InputManager : MonoBehaviour
 
         interactions.ControlFlashlight.performed += _ => flashlighController.SetFlashlightState();
         interactions.PickupCollectibles.performed += _ => onTryPickupCollectible.Raise();
+        interactions.Escape.performed += _ => escapeController.trytoEscape();
 
         UIActions.Pause.performed += _ => pauseMenu.SetActivePause();
         UIActions.JournalNext.performed += _ => onJournalNext.Raise();
@@ -65,7 +67,8 @@ public class InputManager : MonoBehaviour
         if (pauseMenu.journalPaused)
         {
             UIActions.Pause.Disable();
-        } else
+        }
+        else
         {
             UIActions.Pause.Enable();
         }
@@ -73,10 +76,12 @@ public class InputManager : MonoBehaviour
         if (pauseMenu.menuPaused)
         {
             UIActions.ToggleJournal.Disable();
-        } else 
+        }
+        else
         {
             UIActions.ToggleJournal.Enable();
-            UIActions.ToggleJournal.performed += _ => {
+            UIActions.ToggleJournal.performed += _ =>
+            {
                 onToggleJournal.Raise(!pauseMenu.journalPaused);
             };
         }

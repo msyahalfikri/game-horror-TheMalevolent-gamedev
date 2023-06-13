@@ -31,7 +31,7 @@ public class EasterEgg : MonoBehaviour
 
     IEnumerator ShowJumpscare()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(3f);
         if (isColliding)
         {
             jumpscareImage.SetActive(true);
