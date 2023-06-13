@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a95a8c3400d1f94aa07b08ab9c51b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introDuration: 35
+  introDuration: 12
   levelLoader: {fileID: 300361150}
 --- !u!95 &710040728 stripped
 Animator:
