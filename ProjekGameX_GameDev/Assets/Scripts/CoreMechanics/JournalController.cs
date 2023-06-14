@@ -48,7 +48,7 @@ public class JournalController : MonoBehaviour
         Display(false);
         ChangePageSprite(pages[activePageNum]);
         pickupText.SetActive(false);
-        DisplayPickupText(null, "Collect Clues to Complete Your Journal!");
+        DisplayPickupText(null, "Collect Clues to Complete Your Journal! [J]");
     }
 
     void Update()
@@ -66,6 +66,7 @@ public class JournalController : MonoBehaviour
             {
                 textActive = false;
                 pickupText.SetActive(false);
+                pickupText.GetComponent<TextMeshProUGUI>().faceColor = new Color32(255, 255, 255, 255);
             }
         }
     }
