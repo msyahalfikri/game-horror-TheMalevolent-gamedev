@@ -24,6 +24,11 @@ public class CollectibleStats : MonoBehaviour
         isEndlessMode = true;
     }
 
+    public void OnStoryStart(Component sender, object data)
+    {
+        isEndlessMode = false;
+    }
+
     public void OnCollectiblePickup(Component sender, object data)
     {
         GameObject collectible = (GameObject) data;
@@ -38,7 +43,7 @@ public class CollectibleStats : MonoBehaviour
             }
             else 
             {
-                // For Story Mode Later
+                Debug.Log("Complete");
             }
         }
     }
