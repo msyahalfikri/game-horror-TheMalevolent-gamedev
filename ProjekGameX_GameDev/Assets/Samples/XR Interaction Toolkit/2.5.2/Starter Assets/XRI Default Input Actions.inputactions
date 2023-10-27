@@ -1579,9 +1579,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Y Button Press",
+                    "name": "B Button Press",
                     "type": "Button",
                     "id": "8ec7965e-4294-47ab-9641-6cbbb5aa7aa0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Y Button Press",
+                    "type": "Button",
+                    "id": "2a3a82e2-e608-412e-a2d2-4900dd87068c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1758,6 +1767,17 @@
                     "name": "",
                     "id": "8b2db264-9dcc-43a8-a054-cfffe4d9aae2",
                     "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "B Button Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e98336b-bf2e-4534-8be8-89669794455c",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
