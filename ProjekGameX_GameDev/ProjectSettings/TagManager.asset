@@ -7,6 +7,7 @@ TagManager:
   - AI
   - PlayerHead
   - Point
+  - Body
   layers:
   - Default
   - TransparentFX
