@@ -8,6 +8,8 @@ public class AnimateHandOnInput : MonoBehaviour
     public InputActionProperty pinchAnimationAction;
     public InputActionProperty gripAnimationAction;
     public InputActionProperty thumbAnimation;
+    public InputActionProperty pauseAction;
+    [SerializeField] PauseMenu pauseMenu;
     private Flashlight flashlight;
     public Animator handAnimator;
     // Start is called before the first frame update
@@ -18,12 +20,14 @@ public class AnimateHandOnInput : MonoBehaviour
 
     private void OnEnable()
     {
-        thumbAnimation.action.performed += OnYButtonPressed;
+        thumbAnimation.action.performed += OnBButtonPressed;
+        pauseAction.action.performed += OnYButtonPressed;
     }
 
     private void OnDisable()
     {
-        thumbAnimation.action.performed -= OnYButtonPressed;
+        thumbAnimation.action.performed -= OnBButtonPressed;
+        pauseAction.action.performed += OnYButtonPressed;
     }
 
 
@@ -37,8 +41,13 @@ public class AnimateHandOnInput : MonoBehaviour
        handAnimator.SetFloat("Grip", gripValue);
     }
 
-    private void OnYButtonPressed(InputAction.CallbackContext context)
+    private void OnBButtonPressed(InputAction.CallbackContext context)
     {
         flashlight.SetFlashlightState(); // Call the flashlight function
+    }
+
+    private void OnYButtonPressed(InputAction.CallbackContext context)
+    {
+        pauseMenu.SetActivePause();
     }
 }
