@@ -24,7 +24,6 @@ public class LevelLoaderScript : MonoBehaviour
     {
         StartCoroutine(LoadLevel(0));
     }
-
     public void LoadIntro()
     {
         StartCoroutine(LoadLevel(1));
@@ -38,8 +37,14 @@ public class LevelLoaderScript : MonoBehaviour
     {
         StartCoroutine(LoadLevel(3));
     }
-    public void LoadEnding()
+
+    public void LoadVRMode()
     {
         StartCoroutine(LoadLevel(4));
+    }
+
+    public void LoadEnding()
+    {
+        StartCoroutine(LoadLevel(5));
     }
 }
