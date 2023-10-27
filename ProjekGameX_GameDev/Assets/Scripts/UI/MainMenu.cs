@@ -42,4 +42,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("EndlessMode");
     }
 
+    public void OnVRModeButtonClick()
+    {
+        // Load VRMode Scene
+        SceneManager.LoadScene("VRMode");
+    }
+
 }
